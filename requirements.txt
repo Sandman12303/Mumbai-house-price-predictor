@@ -1,0 +1,10 @@
+pandas
+scikit-learn
+joblib
+fastapi
+uvicorn
+pydantic
+numpy
+geopy
+folium
+branca

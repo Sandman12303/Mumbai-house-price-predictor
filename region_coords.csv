@@ -1,0 +1,102 @@
+region,lat,lon,is_flagged
+Agripada,18.975,72.828,False
+Airoli,19.1579,72.9935,False
+Ambarnath,19.136208,72.816827,False
+Ambernath East,19.195,73.195,False
+Ambernath West,19.19,73.18,False
+Andheri East,19.1197,72.8464,False
+Andheri West,19.1363,72.8277,False
+Anjurdive,19.22,73.04,False
+Badlapur East,19.165,73.235,False
+Badlapur West,19.155,73.22,False
+Bandra East,19.06,72.85,False
+Bandra Kurla Complex,19.0667,72.8667,False
+Bandra West,19.0596,72.8295,False
+Belapur,19.024,73.04,False
+Bhandup East,19.1378308,72.9361964,False
+Bhandup West,19.1462636,72.9339461,False
+Bhayandar East,19.3,72.86,False
+Bhayandar West,19.3015,72.85,False
+Bhiwandi,19.2969,73.0631,False
+Boisar,19.8,72.75,True
+Borivali East,19.229,72.8644,False
+Borivali West,19.2307,72.8567,False
+Byculla,18.978,72.833,False
+Chembur,19.0623,72.8997,False
+Colaba,18.9067,72.8147,False
+Dadar East,19.019,72.845,False
+Dadar West,19.02,72.838,False
+Dahisar,19.2493572,72.8596302,False
+Deonar,19.0475502,72.9051895,False
+Diva,19.2300117,73.0281438,False
+Dombivali,19.2167,73.0833,False
+Dombivali East,19.215,73.095,False
+Dronagiri,18.88,72.95,False
+Ghansoli,19.1254,73.0012,False
+Ghatkopar East,19.085,72.918,False
+Ghatkopar West,19.086,72.908,False
+Girgaon,18.955,72.82,False
+Goregaon East,19.1688,72.857,False
+Goregaon West,19.1623,72.8433,False
+Jogeshwari East,19.1429467,72.8551559,False
+Jogeshwari West,19.136394,72.8373817,False
+Juhu,19.1075,72.8263,False
+Kalamboli,19.03,73.105,False
+Kalyan East,19.235,73.138,False
+Kalyan West,19.2403,73.1305,False
+Kamothe,19.02,73.09,False
+Kandivali East,19.206,72.852,False
+Kandivali West,19.2075,72.835,False
+Kanjurmarg,19.124102,72.9385562,False
+Karanjade,18.98,73.105,False
+Karjat,18.91,73.33,False
+Khar,19.0682411,72.8400412,False
+Kharghar,19.0473,73.0699,False
+Khopoli,18.788,73.344,True
+Koper Khairane,19.098,73.008,False
+Kurla,19.0652797,72.8793805,False
+Lower Parel,18.9953,72.8315,False
+Mahalaxmi,18.9825203,72.8242196,False
+Mahim,19.035,72.84,False
+Malad East,19.186,72.858,False
+Malad West,19.1874,72.8484,False
+Marine Lines,18.945,72.825,False
+Matunga,19.0314768,72.8468509,False
+Mazagaon,18.968,72.84,False
+Mira Road East,19.2813,72.8561,False
+Mulund East,19.171,72.956,False
+Mulund West,19.1726,72.9426,False
+Nahur East,19.1546402,72.9466525,False
+Naigaon East,19.355,72.855,False
+Nala Sopara,19.417,72.82,False
+Neral,19.03,73.32,False
+Nerul,19.033,73.0169,False
+Nilje Gaon,19.185,73.08,False
+Palghar,19.6969,72.7654,True
+Panvel,18.9894,73.1175,False
+Parel,18.995,72.84,False
+Powai,19.1176,72.906,False
+Prabhadevi,19.015,72.828,False
+Rasayani,18.9,73.16,False
+Sanpada,19.065,73.008,False
+Santacruz East,19.082,72.852,False
+Santacruz West,19.083,72.837,False
+Seawoods,19.02,73.018,False
+Sewri,18.9987796,72.8544218,False
+Shil Phata,19.145,73.045,False
+Sion,19.04,72.86,False
+Taloja,19.055,73.1,False
+Tardeo,18.97,72.815,False
+Thane East,19.186,72.975,False
+Thane West,19.2183,72.9781,False
+Titwala,19.3,73.2,False
+Ulhasnagar,19.2167,73.15,False
+Ulwe,18.975,73.025,False
+Vasai,19.3508311,72.8938078,False
+Vashi,19.0771,72.9986,False
+Vikhroli,19.1114795,72.928021,False
+Ville Parle East,19.097,72.85,False
+Ville Parle West,19.1159409,72.8312863,False
+Virar,19.5091384,72.8458729,False
+Wadala,19.022,72.857,False
+Worli,19.0176,72.8172,False

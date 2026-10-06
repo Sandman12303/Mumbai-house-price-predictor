@@ -163,6 +163,13 @@ def predict_price(req: PredictionRequest):
         "annual_growth_pct": req.annual_growth_pct or 5.0
     }
 
+@app.get("/map")
+def read_map():
+    map_path = os.path.join(os.path.dirname(__file__), "mumbai_price_map.html")
+    if os.path.exists(map_path):
+        return FileResponse(map_path)
+    return JSONResponse({"message": "Map not generated. Please run `python build_map.py`."})
+
 @app.get("/")
 def read_root():
     index_path = os.path.join(os.path.dirname(__file__), "index.html")
