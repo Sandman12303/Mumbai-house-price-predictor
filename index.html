@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mumbai Apartment Valuation Index | Desert Dusk Edition</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Desert Dusk Palette Swatches */
+            --dusk-terracotta: #A2574F;
+            --dusk-sunset: #E68057;
+            --dusk-rose: #BF7587;
+            --dusk-purple: #993A8B;
+
+            /* Default Dark Theme Variables */
+            --bg-page: #0d0914;
+            --bg-header: #130d1d;
+            --bg-card: #181222;
+            --bg-input: #231b30;
+            --border-subtle: rgba(191, 117, 135, 0.2);
+            --border-hover: rgba(230, 128, 87, 0.4);
+            
+            --text-title: #fdf8f6;
+            --text-body: #e2d9e0;
+            --text-muted: #a395a0;
+            
+            --brand-gradient: linear-gradient(135deg, var(--dusk-sunset) 0%, var(--dusk-purple) 100%);
+            --accent-glow: rgba(230, 128, 87, 0.25);
+            --card-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        [data-theme="light"] {
+            /* Desert Dusk Light Theme Variables */
+            --bg-page: #fdf8f5;
+            --bg-header: #ffffff;
+            --bg-card: #ffffff;
+            --bg-input: #f6eeea;
+            --border-subtle: #e8d7d0;
+            --border-hover: var(--dusk-terracotta);
+            
+            --text-title: #2a1622;
+            --text-body: #4a3440;
+            --text-muted: #7d6572;
+            
+            --brand-gradient: linear-gradient(135deg, var(--dusk-terracotta) 0%, var(--dusk-purple) 100%);
+            --accent-glow: rgba(162, 87, 79, 0.15);
+            --card-shadow: 0 10px 30px rgba(162, 87, 79, 0.08);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+        }
+
+        body {
+            background-color: var(--bg-page);
+            color: var(--text-body);
+            min-height: 100vh;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Top Bar */
+        .site-header {
+            background-color: var(--bg-header);
+            border-bottom: 1px solid var(--border-subtle);
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 800;
+            font-size: 1.15rem;
+            background: var(--brand-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.01em;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .badge-tag {
+            background: rgba(153, 58, 139, 0.15);
+            border: 1px solid rgba(153, 58, 139, 0.3);
+            color: var(--dusk-sunset);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Theme Toggle Switch */
+        .theme-toggle-btn {
+            background: var(--bg-input);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-title);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.8125rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .theme-toggle-btn:hover {
+            border-color: var(--dusk-sunset);
+        }
+
+        /* Main Asymmetric Layout */
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            display: grid;
+            grid-template-columns: 410px 1fr;
+            gap: 3.5rem;
+            align-items: start;
+        }
+
+        @media (max-width: 960px) {
+            .main-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 1.5rem 1rem;
+            }
+        }
+
+        /* Left Side: Editorial Evidence */
+        .editorial-col {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .title-block h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--text-title);
+            letter-spacing: -0.025em;
+            line-height: 1.2;
+            margin-bottom: 0.75rem;
+        }
+
+        .title-block p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        .evidence-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: var(--card-shadow);
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .stat-row {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            border-bottom: 1px solid var(--border-subtle);
+            padding-bottom: 0.75rem;
+        }
+
+        .stat-row:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .stat-num {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--dusk-sunset);
+        }
+
+        .stat-desc {
+            font-size: 0.8125rem;
+            color: var(--text-muted);
+        }
+
+        /* Swatches Palette Display Box */
+        .palette-bar {
+            display: flex;
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 0.5rem;
+        }
+
+        .palette-swatch { flex: 1; }
+
+        /* Right Side: Form & Result App */
+        .app-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 16px;
+            padding: 2.25rem;
+            box-shadow: var(--card-shadow);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.25rem;
+        }
+
+        @media (max-width: 600px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+
+        label {
+            font-size: 0.8125rem;
+            font-weight: 600;
+            color: var(--text-title);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        label .hint {
+            font-weight: 400;
+            color: var(--text-muted);
+        }
+
+        input[type="text"],
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            font-size: 0.875rem;
+            color: var(--text-title);
+            background-color: var(--bg-input);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            outline: none;
+        }
+
+        input:focus, select:focus {
+            border-color: var(--dusk-sunset);
+            box-shadow: 0 0 0 3px var(--accent-glow);
+        }
+
+        /* Search Select Dropdowns */
+        .search-box-container {
+            position: relative;
+        }
+
+        .search-dropdown-menu {
+            position: absolute;
+            top: 105%;
+            left: 0;
+            right: 0;
+            max-height: 220px;
+            overflow-y: auto;
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            z-index: 100;
+            display: none;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+        }
+
+        .search-dropdown-menu.open {
+            display: block;
+        }
+
+        .dropdown-option {
+            padding: 0.6rem 1rem;
+            font-size: 0.875rem;
+            cursor: pointer;
+            color: var(--text-body);
+        }
+
+        .dropdown-option:hover {
+            background-color: rgba(230, 128, 87, 0.15);
+            color: var(--dusk-sunset);
+            font-weight: 600;
+        }
+
+        .fixed-badge {
+            background-color: var(--bg-input);
+            border: 1px solid var(--border-subtle);
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--text-title);
+        }
+
+        .form-note {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            margin-top: 0.75rem;
+            font-style: italic;
+        }
+
+        /* Projection Switch Box */
+        .proj-box {
+            background-color: var(--bg-input);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            padding: 1rem 1.25rem;
+            margin-top: 0.5rem;
+        }
+
+        .proj-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .proj-title {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--text-title);
+        }
+
+        .toggle-switch {
+            position: relative;
+            width: 42px;
+            height: 22px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: rgba(163, 149, 160, 0.4);
+            border-radius: 22px;
+            transition: .25s;
+        }
+
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            border-radius: 50%;
+            transition: .25s;
+        }
+
+        input:checked + .toggle-slider {
+            background: var(--brand-gradient);
+        }
+
+        input:checked + .toggle-slider:before {
+            transform: translateX(20px);
+        }
+
+        .proj-fields {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        .proj-fields.show {
+            display: grid;
+        }
+
+        /* Action Button */
+        .btn-action {
+            margin-top: 1.5rem;
+            width: 100%;
+            padding: 0.9rem;
+            background: var(--brand-gradient);
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-shadow: 0 6px 20px var(--accent-glow);
+            transition: transform 0.15s ease, box-shadow 0.2s ease;
+        }
+
+        .btn-action:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px var(--accent-glow);
+        }
+
+        .btn-action:active {
+            transform: translateY(0);
+        }
+
+        /* Result Section & Flair Components */
+        .result-wrapper {
+            margin-top: 2rem;
+            padding-top: 1.75rem;
+            border-top: 1px solid var(--border-subtle);
+            display: none;
+        }
+
+        .result-card {
+            background-color: var(--bg-input);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .result-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: var(--brand-gradient);
+        }
+
+        .res-eyebrow {
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-muted);
+            margin-bottom: 0.4rem;
+        }
+
+        .res-price-main {
+            font-size: 2.6rem;
+            font-weight: 800;
+            color: var(--text-title);
+            line-height: 1.1;
+            margin-bottom: 0.75rem;
+        }
+
+        /* Flair: Interactive Range Visualizer Bar */
+        .valuation-spectrum {
+            margin: 1.25rem 0;
+            background: rgba(0,0,0,0.15);
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-subtle);
+        }
+
+        .spectrum-title {
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .spectrum-bar-track {
+            height: 10px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 5px;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 0.5rem;
+        }
+
+        .spectrum-bar-fill {
+            position: absolute;
+            left: 20%; right: 20%;
+            top: 0; bottom: 0;
+            background: linear-gradient(90deg, var(--dusk-terracotta), var(--dusk-sunset), var(--dusk-purple));
+            border-radius: 5px;
+        }
+
+        .spectrum-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8125rem;
+            font-weight: 600;
+            color: var(--text-body);
+        }
+
+        .res-proj-badge {
+            display: inline-block;
+            background: rgba(230, 128, 87, 0.15);
+            color: var(--dusk-sunset);
+            border: 1px solid rgba(230, 128, 87, 0.3);
+            font-size: 0.78rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+            margin-bottom: 0.75rem;
+        }
+
+        .res-disclaimer {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        /* Flair: Copy Share Button */
+        .btn-copy {
+            margin-top: 1rem;
+            background: transparent;
+            border: 1px solid var(--border-subtle);
+            color: var(--text-body);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-copy:hover {
+            border-color: var(--dusk-sunset);
+            color: var(--dusk-sunset);
+        }
+
+        /* Error box */
+        .error-alert-box {
+            display: none;
+            margin-top: 1rem;
+            padding: 0.85rem;
+            background-color: rgba(239, 68, 68, 0.15);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #fca5a5;
+            border-radius: 8px;
+            font-size: 0.8125rem;
+        }
+
+        .spinner {
+            width: 18px;
+            height: 18px;
+            border: 2.5px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: #ffffff;
+            animation: spin 0.8s linear infinite;
+            display: none;
+        }
+
+        @keyframes spin { to { transform: rotate(360deg); } }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="brand-logo">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            Mumbai Housing Index
+        </div>
+        <div class="header-actions">
+            <span class="badge-tag">Desert Dusk Edition</span>
+            <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle Theme">
+                <span id="theme-icon">☀️</span>
+                <span id="theme-label">Light Mode</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="main-container">
+
+        <!-- Left Column: Editorial Info & Swatches -->
+        <section class="editorial-col">
+            <div class="title-block">
+                <h1>Area-Specific Flat Valuation</h1>
+                <p>An empirical machine learning model trained strictly on verified Mumbai apartment listing data.</p>
+            </div>
+
+            <div class="evidence-card">
+                <div class="stat-row">
+                    <span class="stat-num">54,782 Listings</span>
+                    <span class="stat-label">Deduplicated Mumbai Apartment Sample</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-num">10.99%</span>
+                    <span class="stat-label">Median Error Rate on Out-of-Sample Test Set</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-num">228 Regions</span>
+                    <span class="stat-label">Strict Area-Bound Locality Verification</span>
+                </div>
+
+                <!-- Palette Flair Bar -->
+                <div style="margin-top: 0.5rem;">
+                    <div style="font-size: 0.72rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px;">Desert Dusk Theme Palette</div>
+                    <div class="palette-bar">
+                        <div class="palette-swatch" style="background: #A2574F;" title="Terracotta #A2574F"></div>
+                        <div class="palette-swatch" style="background: #E68057;" title="Sunset #E68057"></div>
+                        <div class="palette-swatch" style="background: #BF7587;" title="Dusty Rose #BF7587"></div>
+                        <div class="palette-swatch" style="background: #993A8B;" title="Dusk Purple #993A8B"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Right Column: Form App & Valuation Card -->
+        <section class="app-card">
+            <form id="valuation-form">
+                <div class="form-grid">
+
+                    <!-- Searchable Region Input -->
+                    <div class="form-group full">
+                        <label for="region-input">Region <span class="hint">Type to search 228 regions</span></label>
+                        <div class="search-box-container">
+                            <input type="text" id="region-input" placeholder="Search region (e.g. Andheri West, Thane West)..." autocomplete="off" required>
+                            <input type="hidden" id="region" name="region" required>
+                            <div id="region-dropdown" class="search-dropdown-menu"></div>
+                        </div>
+                    </div>
+
+                    <!-- Searchable Locality Dropdown -->
+                    <div class="form-group full">
+                        <label for="locality-input">Locality / Project <span id="locality-count-hint" class="hint">Filtered by region</span></label>
+                        <div class="search-box-container">
+                            <input type="text" id="locality-input" placeholder="Search project in this region..." autocomplete="off">
+                            <input type="hidden" id="locality" name="locality" value="Other">
+                            <div id="locality-dropdown" class="search-dropdown-menu"></div>
+                        </div>
+                    </div>
+
+                    <!-- BHK -->
+                    <div class="form-group">
+                        <label for="bhk">BHK (Bedrooms) <span id="bhk-hint" class="hint">1 - 10</span></label>
+                        <input type="number" id="bhk" name="bhk" value="2" min="1" max="10" required>
+                    </div>
+
+                    <!-- Area -->
+                    <div class="form-group">
+                        <label for="area">Carpet Area (sq ft) <span id="area-hint" class="hint">127 - 16000</span></label>
+                        <input type="number" id="area" name="area" value="750" min="127" max="16000" required>
+                    </div>
+
+                    <!-- Fixed Type -->
+                    <div class="form-group">
+                        <label>Property Type</label>
+                        <div class="fixed-badge">Apartment</div>
+                    </div>
+
+                    <!-- Construction Status -->
+                    <div class="form-group">
+                        <label for="status">Construction Status</label>
+                        <select id="status" name="status" required></select>
+                    </div>
+
+                    <!-- Age -->
+                    <div class="form-group full">
+                        <label for="age">Property Age</label>
+                        <select id="age" name="age" required></select>
+                    </div>
+
+                    <!-- Future Year Projection Box -->
+                    <div class="form-group full">
+                        <div class="proj-box">
+                            <div class="proj-header">
+                                <span class="proj-title">Project Price into Future Years</span>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="enable-proj">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                            <div id="proj-fields" class="proj-fields">
+                                <div class="form-group">
+                                    <label for="years_ahead">Years Ahead</label>
+                                    <input type="number" id="years_ahead" name="years_ahead" value="3" min="1" max="20">
+                                </div>
+                                <div class="form-group">
+                                    <label for="annual_growth_pct">Annual Growth (%)</label>
+                                    <input type="number" id="annual_growth_pct" name="annual_growth_pct" value="5.0" step="0.5">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="form-note">Estimates apply to apartments only.</div>
+
+                <button type="submit" class="btn-action" id="btn-submit">
+                    <span class="spinner" id="btn-spinner"></span>
+                    <span id="btn-text">Estimate Flat Value</span>
+                </button>
+            </form>
+
+            <div class="error-alert-box" id="error-alert"></div>
+
+            <!-- Result Section with Spectrum Flair -->
+            <div class="result-wrapper" id="result-wrapper">
+                <div class="result-card">
+                    <div class="res-eyebrow">Machine Learning Estimated Value</div>
+                    <div class="res-price-main" id="res-price">Rs 1.86 crore</div>
+
+                    <!-- Spectrum Range Visualizer -->
+                    <div class="valuation-spectrum">
+                        <div class="spectrum-title">
+                            <span>Valuation Spectrum (±20% Margin)</span>
+                            <span id="spectrum-range-text">Rs 1.49 Cr – Rs 2.24 Cr</span>
+                        </div>
+                        <div class="spectrum-bar-track">
+                            <div class="spectrum-bar-fill"></div>
+                        </div>
+                        <div class="spectrum-labels">
+                            <span id="spec-low">Low: Rs 1.49 Cr</span>
+                            <span id="spec-mid" style="color: var(--dusk-sunset);">Est: Rs 1.86 Cr</span>
+                            <span id="spec-high">High: Rs 2.24 Cr</span>
+                        </div>
+                    </div>
+
+                    <div id="res-proj-box" style="display:none;">
+                        <div class="res-proj-badge" id="res-proj-tag"></div>
+                    </div>
+
+                    <div class="res-disclaimer">Based on machine learning model estimates from historical listing prices, not a certified physical appraisal.</div>
+
+                    <button class="btn-copy" id="btn-copy">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                        Copy Summary
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        let regionsList = [];
+        let regionLocalitiesMap = {};
+        let currentRegionLocalityList = [];
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            setupThemeToggle();
+            await loadOptions();
+            setupSearchableRegion();
+            setupSearchableLocality();
+            setupProjectionToggle();
+            setupForm();
+            setupCopyBtn();
+        });
+
+        // Theme Toggle Handler
+        function setupThemeToggle() {
+            const btn = document.getElementById('theme-toggle');
+            const icon = document.getElementById('theme-icon');
+            const label = document.getElementById('theme-label');
+            const html = document.documentElement;
+
+            // Check stored or default
+            const savedTheme = localStorage.getItem('mumbai_theme') || 'dark';
+            applyTheme(savedTheme);
+
+            btn.addEventListener('click', () => {
+                const current = html.getAttribute('data-theme');
+                const next = current === 'dark' ? 'light' : 'dark';
+                applyTheme(next);
+                localStorage.setItem('mumbai_theme', next);
+            });
+
+            function applyTheme(theme) {
+                html.setAttribute('data-theme', theme);
+                if (theme === 'light') {
+                    icon.innerText = '🌙';
+                    label.innerText = 'Dark Mode';
+                } else {
+                    icon.innerText = '☀️';
+                    label.innerText = 'Light Mode';
+                }
+            }
+        }
+
+        async function loadOptions() {
+            try {
+                const res = await fetch('/options');
+                if (!res.ok) throw new Error('Failed to load backend options');
+                const data = await res.json();
+
+                regionsList = data.region || [];
+                regionLocalitiesMap = data.region_localities || {};
+
+                populateSelect('status', data.status, 'Ready to move');
+                populateSelect('age', data.age, 'Resale');
+
+                if (data.bhk_min && data.bhk_max) {
+                    const bhkInput = document.getElementById('bhk');
+                    bhkInput.min = data.bhk_min;
+                    bhkInput.max = data.bhk_max;
+                    document.getElementById('bhk-hint').innerText = `${data.bhk_min} - ${data.bhk_max}`;
+                }
+
+                if (data.area_min && data.area_max) {
+                    const areaInput = document.getElementById('area');
+                    areaInput.min = data.area_min;
+                    areaInput.max = data.area_max;
+                    document.getElementById('area-hint').innerText = `${data.area_min} - ${data.area_max} sq ft`;
+                }
+
+                const defaultRegion = regionsList.includes("Andheri West") ? "Andheri West" : (regionsList[0] || "");
+                if (defaultRegion) {
+                    selectRegion(defaultRegion);
+                }
+            } catch (err) {
+                showError('Error initializing options: ' + err.message);
+            }
+        }
+
+        function rebuildLocalityDropdown(regionName) {
+            const localities = regionLocalitiesMap[regionName] || [];
+            currentRegionLocalityList = localities;
+
+            document.getElementById('locality-input').value = "Any / not listed";
+            document.getElementById('locality').value = "Other";
+
+            document.getElementById('locality-count-hint').innerText = `${localities.length} projects in ${regionName}`;
+        }
+
+        function setupSearchableRegion() {
+            const input = document.getElementById('region-input');
+            const hidden = document.getElementById('region');
+            const menu = document.getElementById('region-dropdown');
+
+            function filter(query) {
+                menu.innerHTML = '';
+                const q = query.toLowerCase().trim();
+                const matches = regionsList.filter(r => r.toLowerCase().includes(q));
+
+                if (matches.length === 0) {
+                    const item = document.createElement('div');
+                    item.className = 'dropdown-option';
+                    item.style.color = 'var(--text-muted)';
+                    item.innerText = 'No matching region';
+                    menu.appendChild(item);
+                } else {
+                    matches.slice(0, 40).forEach(r => {
+                        const item = document.createElement('div');
+                        item.className = 'dropdown-option';
+                        item.innerText = r;
+                        item.addEventListener('click', () => {
+                            selectRegion(r);
+                            menu.classList.remove('open');
+                        });
+                        menu.appendChild(item);
+                    });
+                }
+            }
+
+            input.addEventListener('focus', () => { filter(input.value); menu.classList.add('open'); });
+            input.addEventListener('input', () => { filter(input.value); menu.classList.add('open'); });
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('#region-input') && !e.target.closest('#region-dropdown')) {
+                    menu.classList.remove('open');
+                }
+            });
+        }
+
+        function selectRegion(r) {
+            document.getElementById('region-input').value = r;
+            document.getElementById('region').value = r;
+            rebuildLocalityDropdown(r);
+        }
+
+        function setupSearchableLocality() {
+            const input = document.getElementById('locality-input');
+            const hidden = document.getElementById('locality');
+            const menu = document.getElementById('locality-dropdown');
+
+            function filter(query) {
+                menu.innerHTML = '';
+                const q = query.toLowerCase().trim();
+
+                const defaultItem = document.createElement('div');
+                defaultItem.className = 'dropdown-option';
+                defaultItem.style.fontWeight = '700';
+                defaultItem.innerText = 'Any / not listed';
+                defaultItem.addEventListener('click', () => {
+                    input.value = 'Any / not listed';
+                    hidden.value = 'Other';
+                    menu.classList.remove('open');
+                });
+                menu.appendChild(defaultItem);
+
+                const matches = currentRegionLocalityList.filter(l => l.toLowerCase().includes(q));
+
+                matches.slice(0, 40).forEach(loc => {
+                    const item = document.createElement('div');
+                    item.className = 'dropdown-option';
+                    item.innerText = loc;
+                    item.addEventListener('click', () => {
+                        input.value = loc;
+                        hidden.value = loc;
+                        menu.classList.remove('open');
+                    });
+                    menu.appendChild(item);
+                });
+            }
+
+            input.addEventListener('focus', () => { filter(input.value); menu.classList.add('open'); });
+            input.addEventListener('input', () => { filter(input.value); menu.classList.add('open'); });
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('#locality-input') && !e.target.closest('#locality-dropdown')) {
+                    menu.classList.remove('open');
+                }
+            });
+        }
+
+        function populateSelect(elemId, items, defaultValue) {
+            const sel = document.getElementById(elemId);
+            sel.innerHTML = '';
+            (items || []).forEach(item => {
+                const opt = document.createElement('option');
+                opt.value = item;
+                opt.textContent = item;
+                if (item === defaultValue) opt.selected = true;
+                sel.appendChild(opt);
+            });
+        }
+
+        function setupProjectionToggle() {
+            const checkbox = document.getElementById('enable-proj');
+            const fields = document.getElementById('proj-fields');
+            checkbox.addEventListener('change', () => {
+                if (checkbox.checked) fields.classList.add('show');
+                else fields.classList.remove('show');
+            });
+        }
+
+        function setupForm() {
+            const form = document.getElementById('valuation-form');
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                hideError();
+
+                const regionVal = document.getElementById('region').value;
+                if (!regionVal || !regionsList.includes(regionVal)) {
+                    showError("Please select a valid region from the dropdown.");
+                    return;
+                }
+
+                const bhkVal = parseInt(document.getElementById('bhk').value);
+                const areaVal = parseFloat(document.getElementById('area').value);
+                const statusVal = document.getElementById('status').value;
+                const ageVal = document.getElementById('age').value;
+                const localityVal = document.getElementById('locality').value || "Other";
+
+                const enableProj = document.getElementById('enable-proj').checked;
+                const yearsAheadVal = enableProj ? parseInt(document.getElementById('years_ahead').value || 0) : 0;
+                const growthPctVal = enableProj ? parseFloat(document.getElementById('annual_growth_pct').value || 5.0) : 5.0;
+
+                const payload = {
+                    bhk: bhkVal,
+                    type: 'Apartment',
+                    area: areaVal,
+                    region: regionVal,
+                    status: statusVal,
+                    age: ageVal,
+                    locality: localityVal,
+                    years_ahead: yearsAheadVal,
+                    annual_growth_pct: growthPctVal
+                };
+
+                setLoading(true);
+
+                try {
+                    const res = await fetch('/predict', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (res.status === 422) {
+                        const err = await res.json();
+                        let msg = err.detail;
+                        if (Array.isArray(err.detail)) {
+                            msg = err.detail.map(d => `${d.loc.join('.')}: ${d.msg}`).join(', ');
+                        }
+                        showError("Validation Error: " + msg);
+                        setLoading(false);
+                        return;
+                    }
+
+                    if (!res.ok) {
+                        const err = await res.json();
+                        throw new Error(err.detail || 'Server calculation error');
+                    }
+
+                    const result = await res.json();
+                    renderResult(result);
+                } catch (err) {
+                    showError(err.message);
+                } finally {
+                    setLoading(false);
+                }
+            });
+        }
+
+        function renderResult(res) {
+            const wrapper = document.getElementById('result-wrapper');
+            
+            document.getElementById('res-price').innerText = res.display;
+            document.getElementById('spectrum-range-text').innerText = `${res.low_display} – ${res.high_display}`;
+            document.getElementById('spec-low').innerText = `Low: ${res.low_display}`;
+            document.getElementById('spec-mid').innerText = `Est: ${res.display}`;
+            document.getElementById('spec-high').innerText = `High: ${res.high_display}`;
+
+            const projBox = document.getElementById('res-proj-box');
+            const projTag = document.getElementById('res-proj-tag');
+
+            if (res.is_projection) {
+                projTag.innerText = `Projected Valuation (+${res.years_ahead} yrs @ ${res.annual_growth_pct}% annual growth)`;
+                projBox.style.display = 'block';
+            } else {
+                projBox.style.display = 'none';
+            }
+
+            wrapper.style.display = 'block';
+            wrapper.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        function setupCopyBtn() {
+            const btn = document.getElementById('btn-copy');
+            btn.addEventListener('click', () => {
+                const region = document.getElementById('region-input').value;
+                const price = document.getElementById('res-price').innerText;
+                const range = document.getElementById('spectrum-range-text').innerText;
+                const text = `Mumbai Apartment Valuation (${region}): ${price} (Range: ${range})`;
+                
+                navigator.clipboard.writeText(text).then(() => {
+                    const orig = btn.innerHTML;
+                    btn.innerText = 'Copied!';
+                    setTimeout(() => { btn.innerHTML = orig; }, 2000);
+                });
+            });
+        }
+
+        function setLoading(isLoading) {
+            const spinner = document.getElementById('btn-spinner');
+            const text = document.getElementById('btn-text');
+            const btn = document.getElementById('btn-submit');
+
+            if (isLoading) {
+                spinner.style.display = 'inline-block';
+                text.innerText = 'Calculating Valuation...';
+                btn.disabled = true;
+            } else {
+                spinner.style.display = 'none';
+                text.innerText = 'Estimate Flat Value';
+                btn.disabled = false;
+            }
+        }
+
+        function showError(msg) {
+            const el = document.getElementById('error-alert');
+            el.innerText = msg;
+            el.style.display = 'block';
+        }
+
+        function hideError() {
+            document.getElementById('error-alert').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
